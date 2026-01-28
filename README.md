@@ -1,11 +1,5 @@
 # IT3031 – Database Systems and Data Driven Applications  
 ## Practical 1: Relational Model
-
-### Degree Program
-**BSc (Hons) in IT – Data Science**  
-Faculty of Computing  
-Sri Lanka Institute of Information Technology (SLIIT)
-
 ---
 
 ## 📌 Overview
