@@ -200,5 +200,30 @@ AND p.budget = (SELECT MAX(budget) FROM proj_tab)
 ;
 
 
+--------------------------- G ----------------------------------
+
+SELECT e.eno,SUM(p.budget) AS TotalBudget
+FROM dept_tab d,proj_tab p,emp_tab e
+WHERE p.pdept = REF(d) AND d.mgr = REF(e)
+GROUP BY e.eno
+HAVING SUM(p.budget) > 60000;
+
+---------------------------- H ----------------------------------
+
+SELECT
+    m.eno,
+    SUM(p.budget) AS total_control_budget
+FROM dept_tab d, emp_tab m, proj_tab p
+WHERE d.mgr = REF(m)
+AND p.pdept = REF(d)
+GROUP BY m.eno
+HAVING SUM(p.budget) = (
+    SELECT MAX(SUM(p2.budget))
+    FROM dept_tab d2, emp_tab m2, proj_tab p2
+    WHERE d2.mgr = REF(m2)
+    AND p2.pdept = REF(d2)
+    GROUP BY m2.eno
+);
+
 
 
